@@ -19,8 +19,25 @@ jobs:
         with:
           node-version: 18
 
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
       - name: Install dependencies
         run: npm install
 
+      - name: Start your app
+        run: npm start &
+        # Make sure your app runs on localhost:3000
+
+      - name: Wait for app to be ready
+        run: npx wait-on http://localhost:3000
+
       - name: Run Cypress tests
-        run: npx cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          start: npm start
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 60
