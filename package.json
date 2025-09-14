@@ -1,15 +1,20 @@
 {
-  "name": "automated-testing-framework",
+  "name": "cypress-saucedemo-tests",
   "version": "1.0.0",
+  "description": "Automated Cypress tests for SauceDemo website",
   "main": "index.js",
   "scripts": {
     "test": "cypress run",
     "cypress:open": "cypress open"
   },
-  "keywords": [],
-  "author": "Your Name",
+  "keywords": [
+    "cypress",
+    "e2e",
+    "testing",
+    "saucedemo"
+  ],
+  "author": "Lasya Karanam",
   "license": "ISC",
-  "description": "Automated testing framework using Cypress",
   "devDependencies": {
     "cypress": "^15.2.0"
   }
